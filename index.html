@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SWINGMANSWISH.com</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <script src="app.js"></script> -->
+</head>
+<body>
+  <!--
+      Fish SVG Cred:
+      https://thenounproject.com/search/?q=fish&i=589236
+   -->
+
+  <div class="hero">
+    <h1 contenteditable>SWINGMANSWISH.com</h1>
+  </div>
+
+  <div class="wrapper">
+    <h2>Pick your starting 5! Pick a scoring machine!</h2>
+    <p>Total squad power must add up to 15</p> 
+    <p></p>
+    <ul class="plates">
+      <li>Assembling your dream team...</li>
+    </ul>
+    <form class="add-items">
+      <input type="text" name="item" placeholder="Player Name" required>
+      <input type="submit" value="+ Add Player">
+    </form>
+    <!-- <form class="remove-items">
+      <input type="text" name="item" placeholder="Item Name" required>
+      <input type="submit" name="strip" value="Remove All Players">
+    </form> -->
+  </div>
+<script>
+  const hero = document.querySelector('.hero');
+  const text = hero.querySelector('h1');
+  const walk = 300; // 100px
+
+  function shadow(e) {
+    const { offsetWidth: width, offsetHeight: height } = hero;
+    let { offsetX: x, offsetY: y } = e;
+
+    if (this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
+
+    const xWalk = Math.round((x / width * walk) - (walk / 2));
+    const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+    text.style.textShadow = `
+      ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+      ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+      ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+      ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
+    `;
+
+  }
+
+  hero.addEventListener('mousemove', shadow);
+
+
+  var addItems = document.querySelector('.add-items');
+  var removeItems = document.querySelector('.remove-items');
+  var itemsList = document.querySelector('.plates');
+  var items = JSON.parse(localStorage.getItem('items')) || [];
+
+  function addItem(e) {
+    e.preventDefault();
+    const text = (this.querySelector('[name=item]')).value;
+    const item = {
+      text,
+      done: false
+    };
+
+    items.push(item);
+    populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));
+    this.reset();
+
+    // const peace = (this.querySelector('[name=strip]')).value;
+    // if items.value !== 0 {
+    //   items.value == 0
+    // }
+  }
+
+  function removeItemz(e) {
+    // e.preventDefault();
+    // const peace = (this.querySelector('[name=strip]')).value;
+    // const byeItems = {
+    //   peace,
+    //   done: true
+    // };
+
+    // items.splice(itemsList);
+    // populateList(items, itemsList);
+    // localStorage.setItem('items', JSON.stringify(items));
+    // this.reset();
+  }
+
+  function populateList(plates = [], platesList) {
+    platesList.innerHTML = plates.map((plate, i) => {
+      return ` 
+        <li>
+          <input type="checkbox" data-index=${i} id="item${i}"  ${plate.done ? 'checked' : ''} />
+          <label for="item${i}">${plate.text}</label>
+        </li>
+      `;
+    }).join('');
+  }
+
+  function toggleDone(e) {
+    if(!e.target.matches('input')) return;
+    const el = e.target;
+    const index = el.dataset.index;
+    items[index].done = !items[index].done;
+    localStorage.setItem('items', JSON.stringify(items));
+    populateList(items, itemsList);
+  }
+
+  addItems.addEventListener('submit', addItem);
+  // removeItems.addEventListener('submit', removeItemz);
+  itemsList.addEventListener('click', toggleDone);
+  populateList(items, itemsList);
+
+</script>
+
+
+</body>
+</html>
+
