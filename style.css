@@ -21,18 +21,9 @@
       margin-bottom: 50px;
     }
 
-    .hero {
-    min-height: 500px;
-    margin-bottom: 10%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    color:black;
-    }
-
 
     h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    text-shadow: 2px 2px 0 rgba(0,0,0,1);
     font-size: 70px;
     }
 
