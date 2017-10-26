@@ -3,14 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>SWINGMANSWISH.com</title>
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
-  <!-- <script src="app.js"></script> -->
 </head>
 <body>
 
-  <div class="hero">
-    <h1>SWINGMANSWISH.com</h1>
-  </div>
+  <header>
+    <div class="white">
+     <h1>SWINGMANSWISH</h1>
+    </div>
+    <div class="social">
+        <a href="https://www.instagram.com/swingmanswish/" class="fa fa-instagram"></a><a href="https://twitter.com/swingmanswish" class="fa fa-twitter"></a>
+      </div> 
+  </header>
+  
+  
+  <nav style="width: 100%;">
+      <ul>
+        <li id="click">Home</li>
+        <li id="click1">About</li>
+        <li id="click2">League Scoop</li>
+        <li id="click3">Player Info/Stats</li>
+        <li id="click4">Team Info/Stats</li>
+        <li id="click5">Contact</li>
+      </ul>
+  </nav>
 
   <div class="wrapper">
     <h2>Pick your starting 5! Pick a scoring machine!</h2>
@@ -27,61 +45,92 @@
       <input type="submit" id="removeItems" name="strip" value="Double Click to Remove All Players">
     </form>
   </div>
-<script>
-  var addItems = document.querySelector('.add-items');
-  var removeItems = document.querySelector('.remove-items');
-  var itemsList = document.querySelector('.plates');
-  var items = JSON.parse(localStorage.getItem('items')) || [];
 
-  function addItem(e) {
-    e.preventDefault();
-    const text = (this.querySelector('[name=item]')).value;
-    const item = {
-      text,
-      done: false
-    };
+  <div class="container">
+    <div id="about">
+      <h1>About</h1>
+      <p>Swingmanswish is the brainchild of a serious dedication to the NBA. Built by fans, for fans. We seek to provide a hub for all basketball enthusiasts by delivering accessible statistics, our pick of freshly brewed league news, stunning highlights, and last but certainly not least, a prime time fantasy experience. Unsatisfied with other fantasy basketball services, we aim to make our game as simple as possible. Each season, you can pick your 'starting five'. Players are ranked by skill as a 5, 4, 3, 2, 1. This is based on our rank of the top 15 projected scorers at the beginning of the season. But, if you choose to select a player outside of this list, their rank automatically counts as a 1. Simply have your players ranks add up to 15, and you've got your team! Scoring is the objective here, no fussing around with rebounds, assists, etc. It's your team versus the next guys. Points are added up throughout the NBA schedule and if your team has more points than the next guy, you win. There will be more to come, this is just the baseline for this super addictive app.</p>
+    </div>  
+  
+    <div id="scoop">  
+      <h1>League Scoop</h1>
+      <p>The Suns fired their coach. But the real problem is at the top.</p>
+      
+      <p>Eric Bledsoe won't play after tweeting he wanted to leave the Suns</p>
 
-    items.push(item);
-    var itemSlice = items.slice(0, 5);
-    populateList(itemSlice, itemsList);
-    localStorage.setItem('items', JSON.stringify(items));
-    this.reset();
-  }
+      <p>Dwyane Wade asked Ty Lue to let him come off the bench for Cavaliers</p>
 
-  function sweep(plates = [], platesList) {
-    localStorage.clear();
-  }
+      <p>The bank is always open for Andrew Wiggins</p>
 
-  function populateList(plates = [], platesList) {
-    platesList.innerHTML = plates.map((plate, i) => {
-      return ` 
-        <li>
-          <input type="checkbox" data-index=${i} id="item${i}"  ${plate.done ? 'checked' : ''} />
-          <label for="item${i}">${plate.text}</label>
-        </li>
-      `;
-    }).join('');
-    plates.slice
-  }
+      <p>Lonzo Ball sucks</p>
 
-  function toggleDone(e) {
-    if(!e.target.matches('input')) return;
-    const el = e.target;
-    const index = el.dataset.index;
-    items[index].done = !items[index].done;
-    localStorage.setItem('items', JSON.stringify(items));
-    populateList(items, itemsList);
-  }
+      <p>Welcome to Chicago... Tough outing for the Rookie</p>
 
-  addItems.addEventListener('submit', addItem);
-  // removeItems.addEventListener('submit', removeItemz);
-  itemsList.addEventListener('click', toggleDone);
-  populateList(items, itemsList);
+      <p>LeBron wants out of Cleveland</p>
 
-  document.getElementById('removeItems').onclick = sweep();
- 
+      <p>Melo back to the Knicks?</p>
 
-</script>
+      <p>Devin Booker scores a ton of points again but the Suns lose</p>
+    </div>  
+    
+    <div id="playerInfo">
+        <h1>Player Lookup</h1>
+        <p>Lookup an NBA Player!</p>
+        <input type="text" name="item" placeholder="Player Name" required>
+        <input type="submit" value="Go!">
+    </div>
+  
+    <div id="teamInfo">
+      <h1>Team Lookup</h1>
+      <p>Lookup an NBA Team!</p>
+      <input type="text" name="item" placeholder="Team Name" required>
+      <input type="submit" value="Go!">
+    </div>
+
+      <div id="contact">  
+        <h1>Contact Us</h1>
+            <form method="POST" action="http://formspree.io/swingmanswish@gmail.com">
+              <input type="email" name="email" placeholder="Your email">
+              <textarea name="message" placeholder="Your message"></textarea>
+              <button type="submit">Send</button>
+            </form>
+        <!-- <div class="wrapper">
+            <form method="post" action="" class="ccform">
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Full Name" required>
+            </div>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Email" required>
+            </div>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-mobile-phone fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Phone">
+            </div>
+             <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Subject" required>
+            </div>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
+                <textarea class="ccformfield" name="comments" rows="8" placeholder="Message" required></textarea>
+            </div>
+            <div class="ccfield-prepend">
+                <input class="ccbtn" type="submit" value="Submit">
+            </div>
+            </form>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="footer">This page has been created from the heart, for the love of the game. Copyright 2017 <strong>SWINGMANSWISH</strong>.</div>  
+<!-- <script>
+
+</script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="app.js"></script>
 
 
 </body>

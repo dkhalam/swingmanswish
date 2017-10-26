@@ -1,36 +1,104 @@
 
     html {
-      box-sizing: border-box;
-      background:url('https://static.pexels.com/photos/268882/pexels-photo-268882.jpeg') center no-repeat;
-      background-size:cover;
-      min-height:100vh;
-      display:flex;
-      justify-content: center;
+      /*box-sizing: border-box;*/
+      /*min-height:100vh;*/
+      /*display:flex;*/
+      /*justify-content: center;
       align-items: center;
+      text-align: center;*/
+      width: 100%;
+      margin: 0 auto;
+      font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+      background-color: lightgrey;
+    }
+    /**, *:before, *:after {box-sizing: inherit; }*/
+
+
+    header {
+      height: 400px;
+      background:url('NBA-Header-01.jpg') center no-repeat;
+      background-size:cover;
       text-align: center;
-      font-family: Futura,"Trebuchet MS",Arial,sans-serif
+      width: 100%;
     }
-    *, *:before, *:after {box-sizing: inherit; }
 
-    svg {
-      fill:white;
-      background: rgba(0,0,0,0.1);
+    header h1 {
+      margin: 0;
+      background: rgba(255, 255, 255, .6);
+      color: black;
+      font-size: 70px;
+      display: inline;
+    }
+
+    header h3 {
+      font-size: 30px;
+    }
+    .social {
+      text-align: center;
+      margin-top: 240px;
+    }
+    .fa {
       padding: 20px;
-      border-radius: 50%;
-      width:200px;
-      margin-bottom: 50px;
+      font-size: 30px;
+      width: 50px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+    }
+    .fa-twitter {
+    background: #55ACEE;
+    color: white;
+    }
+    .fa-instagram {
+      background: #125688;
+      color: white;
+    }
+    .fa:hover {
+    opacity: 0.7;
     }
 
+    .container {
+      width: 70%;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-    h1 {
-    text-shadow: 2px 2px 0 rgba(0,0,0,1);
-    font-size: 70px;
+    ul {
+      list-style: none;
+      margin: 0;
+      text-align: center;
+    }
+
+    nav {
+      width: 100%;
+      background: black;
+      color: #fff;
+    }
+
+    .fixed-nav {
+      position: fixed;
+      width: 80%;
+      top: 0;
+      z-index: 20;
+    }
+
+    ul li {
+      display: inline-block;
+      padding: 20px;
+    }
+
+    ul li:hover {
+      background: red;
     }
 
     .wrapper {
+      margin: 0 auto;
+      margin-top: 2%;
       padding: 20px;
       background: rgba(255,255,255,0.95);
       box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 70%;
     }
 
     h2 {
@@ -42,7 +110,7 @@
     .plates {
       margin: 0;
       padding: 0;
-      text-align: left;
+      text-align: center;
       list-style: none;
     }
 
@@ -91,3 +159,76 @@
       outline:0;
       border:1px solid rgba(0,0,0,0.1);
     }
+
+/* Form CSS*/
+.ccform {
+   margin: 0 auto;
+    width: 800px;
+}
+.ccfield-prepend{
+  margin-bottom:10px;
+  width:100%;
+}
+
+.ccform-addon{
+  color:blue; 
+  float:left;
+  padding:8px;
+  width:8%;
+  background:#FFFFFF;
+  text-align:center;  
+}
+
+.ccformfield {
+  color:#000000; 
+  background:#FFFFFF;
+  border: 1px solid black;
+  padding:15.5px;
+  width:91.9%;
+  display:block;
+  font-family: 'Lato',Arial,sans-serif;
+  font-size:14px;
+}
+
+.ccformfield {
+  font-family: 'Lato',Arial,sans-serif;
+}
+.ccbtn{
+  display:block;
+  border:none;
+  background:red;
+  color:#FFFFFF;
+  padding:12px 25px;
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:bold;
+}
+.ccbtn:hover{
+  background:black;
+
+}
+
+input[type=email], textarea {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  padding: 10px;
+}
+
+    .footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 30px;
+  }
+}
