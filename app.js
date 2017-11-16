@@ -95,3 +95,27 @@
   populateList(items, itemsList);
 
   document.getElementById('removeItems').onclick = sweep();
+
+  $(document).ready(function () {
+  $('#getTeams').click(function () {
+    var showData = $('#showTeams');
+
+    $.getJSON('teams.json', function (data) {
+      console.log(data);
+
+      var teams = data.teams.map(function (team) {
+        return team.location + ' ' + team.simpleName;
+      });
+
+      showData.empty();
+
+      if (teams.length) {
+        var content = '<li>' + teams.join('</li><li>') + '</li>';
+        var list = $('<ul />').html(content);
+        showData.append(list);
+      }
+    });
+
+    showData.text('Loading the JSON file.');
+  });
+});
